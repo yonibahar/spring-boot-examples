@@ -26,5 +26,11 @@ mvn test'''
       }
     }
 
+    stage('Package') {
+      steps {
+        sh 'mvn clean package'
+      }
+    }
+
   }
 }
