@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('Check Out Code') {
+    stage('Checkout Code') {
       steps {
         git(url: 'https://github.com/yonibahar/spring-boot-examples.git', branch: 'yonibahar_sol', changelog: true)
       }
