@@ -6,13 +6,13 @@ pipeline {
 
   }
   stages {
-    stage('Checkout Code') {
+    stage('Checkout code') {
       steps {
         git(url: 'https://github.com/yonibahar/spring-boot-examples.git', branch: 'yonibahar_sol', changelog: true)
       }
     }
 
-    stage('Maven Compile') {
+    stage('Maven compile') {
       steps {
         sh '''cd spring-boot-package-war/
 mvn compile'''
@@ -34,8 +34,25 @@ mvn clean package'''
     }
 
     stage('Notify Slack') {
+      parallel {
+        stage('Notify slack') {
+          steps {
+            slackSend(message: 'Build Success - Module2', token: 'umVhmfifUUaxnxtOdQdSpAaN', channel: 'int-project', notifyCommitters: true)
+          }
+        }
+
+        stage('Chuck Norris') {
+          steps {
+            chuckNorris()
+          }
+        }
+
+      }
+    }
+
+    stage('Archive the artifact') {
       steps {
-        slackSend(message: 'Build Success - Module2', token: 'umVhmfifUUaxnxtOdQdSpAaN', channel: 'int-project', notifyCommitters: true)
+        archiveArtifacts 'Package'
       }
     }
 
