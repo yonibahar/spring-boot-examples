@@ -33,7 +33,7 @@ mvn clean package'''
       }
     }
 
-    stage('Notify Slack') {
+    stage('Slack & Chuck') {
       parallel {
         stage('Notify slack') {
           steps {
@@ -41,7 +41,7 @@ mvn clean package'''
           }
         }
 
-        stage('Chuck Norris') {
+        stage('Chuck norris') {
           steps {
             chuckNorris()
           }
