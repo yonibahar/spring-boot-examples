@@ -12,14 +12,14 @@ pipeline {
       }
     }
 
-    stage('Maven compile') {
+    stage('Compile maven') {
       steps {
         sh '''cd spring-boot-package-war/
 mvn compile'''
       }
     }
 
-    stage('Test mvn') {
+    stage('Test maven') {
       steps {
         sh '''cd spring-boot-package-war/
 mvn test'''
@@ -50,9 +50,9 @@ mvn clean package'''
       }
     }
 
-    stage('Archive the artifact') {
+    stage('Delete workspace') {
       steps {
-        archiveArtifacts 'Package'
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true)
       }
     }
 
