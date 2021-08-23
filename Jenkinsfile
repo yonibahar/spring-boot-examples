@@ -52,7 +52,7 @@ mvn clean package'''
 
     stage('Delete workspace') {
       steps {
-        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true)
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanupMatrixParent: true)
       }
     }
 
