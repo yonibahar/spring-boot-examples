@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Checkout code') {
       steps {
+        cleanWs()
         git(url: 'https://github.com/yonibahar/spring-boot-examples.git', branch: 'yonibahar_sol', changelog: true)
       }
     }
