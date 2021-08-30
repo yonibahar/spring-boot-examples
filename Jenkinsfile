@@ -11,7 +11,6 @@ pipeline {
         cleanWs()
       }
     }
-    cleanWs()
     
     stage('Checkout code') {
       steps {
