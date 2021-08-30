@@ -11,7 +11,7 @@ pipeline {
         cleanWs()
       }
     }
-    
+
     stage('Checkout code') {
       steps {
         git(url: 'https://github.com/yonibahar/spring-boot-examples.git', branch: 'yonibahar_sol', changelog: true)
@@ -60,6 +60,12 @@ mvn clean package'''
           }
         }
 
+      }
+    }
+
+    stage('Delete Workspace') {
+      steps {
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
 
