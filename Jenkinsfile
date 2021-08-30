@@ -63,11 +63,5 @@ mvn clean package'''
       }
     }
 
-    stage('Delete Workspace') {
-      steps {
-        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
-      }
-    }
-
   }
 }
