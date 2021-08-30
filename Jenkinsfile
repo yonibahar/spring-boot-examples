@@ -6,9 +6,15 @@ pipeline {
 
   }
   stages {
-    stage('Checkout code') {
+    stage('Clean Workspace') {
       steps {
         cleanWs()
+      }
+    }
+    cleanWs()
+    
+    stage('Checkout code') {
+      steps {
         git(url: 'https://github.com/yonibahar/spring-boot-examples.git', branch: 'yonibahar_sol', changelog: true)
       }
     }
